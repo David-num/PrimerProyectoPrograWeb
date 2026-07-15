@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Departamento de Sistemas Universitarios">
+    <meta name="description" content="Sistema de reservación y administración de aulas universitarias">
+    <title>Sistema de Reservación de Aulas - Universidad</title>
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Reservación de Aulas</h1>
+        <p>Universidad Nacional de Tecnología</p>
+        <section aria-label="User info">
+            <p>Usuario: Jane Doe</p>
+            <p>Rol: Coordinadora Académica</p>
+            <p>Sesión iniciada: 08:30 AM</p>
+        </section>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="classrooms.html">Aulas</a></li>
+            <li><a href="reserve.html">Reservar Aula</a></li>
+            <li><a href="my-reservations.html">Mis Reservas</a></li>
+            <li><a href="admin.html">Administración</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section id="dashboard" aria-labelledby="dashboard-heading">
+            <h2 id="dashboard-heading">Resumen General</h2>
+            <article>
+                <h3>Aulas Disponibles</h3>
+                <p>18</p>
+            </article>
+            <article>
+                <h3>Reservas Activas</h3>
+                <p>7</p>
+            </article>
+        </section>
+
+        <section id="classroom-list" aria-labelledby="classroom-list-heading">
+            <h2 id="classroom-list-heading">Listado de Aulas</h2>
+
+            <article>
+                <h3>Aula A-101</h3>
+                <ul>
+                    <li>Capacidad: 40 estudiantes</li>
+                    <li>Tipo: Aula Teórica</li>
+                    <li>Estado: Disponible</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Laboratorio B-205</h3>
+                <ul>
+                    <li>Capacidad: 25 estudiantes</li>
+                    <li>Tipo: Laboratorio de Cómputo</li>
+                    <li>Estado: Ocupada</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Aula C-310</h3>
+                <ul>
+                    <li>Capacidad: 60 estudiantes</li>
+                    <li>Tipo: Auditorio</li>
+                    <li>Estado: Disponible</li>
+                </ul>
+            </article>
+
+        </section>
+
+        <section id="reserve-classroom" aria-labelledby="reserve-classroom-heading">
+            <h2 id="reserve-classroom-heading">Reservar un Aula</h2>
+
+            <form action="#" method="post">
+
+                <fieldset>
+                    <legend>Detalles de la Reservación</legend>
+
+                    <label for="classroom-select">Aula</label>
+                    <select id="classroom-select" name="classroom" required>
+                        <option value="">Seleccione un aula</option>
+                        <option value="A-101">Aula A-101</option>
+                        <option value="B-205">Laboratorio B-205</option>
+                        <option value="C-310">Aula C-310</option>
+                    </select>
+
+                    <label for="reservation-date">Fecha</label>
+                    <input type="date" id="reservation-date" name="reservation-date" required>
+
+                    <label for="reservation-time">Hora</label>
+                    <input type="time" id="reservation-time" name="reservation-time" required>
+
+                    <label for="reservation-purpose">Motivo</label>
+                    <textarea id="reservation-purpose" name="reservation-purpose" rows="3"></textarea>
+
+                </fieldset>
+
+                <button type="submit">Enviar Reservación</button>
+
+            </form>
+
+        </section>
+
+        <section id="my-reservations" aria-labelledby="my-reservations-heading">
+            <h2 id="my-reservations-heading">Mis Reservas</h2>
+
+            <table>
+                <caption>Listado de reservas realizadas por el usuario actual</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Aula</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Horario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aula A-101</td>
+                        <td>2026-07-20</td>
+                        <td>10:00 AM - 12:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Laboratorio B-205</td>
+                        <td>2026-07-22</td>
+                        <td>02:00 PM - 04:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Universidad Nacional de Tecnología - Oficina de Gestión de Instalaciones Académicas</p>
+        <p>Año Académico 2026</p>
+        <p>&copy; 2026 Sistema de Reservación de Aulas. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
