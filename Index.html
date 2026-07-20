@@ -6,6 +6,7 @@
     <meta name="author" content="Departamento de Sistemas Universitarios">
     <meta name="description" content="Sistema de reservación y administración de aulas universitarias">
     <title>Sistema de Reservación de Aulas - Universidad</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -21,10 +22,10 @@
 
     <nav>
         <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="classrooms.html">Aulas</a></li>
-            <li><a href="reserve.html">Reservar Aula</a></li>
-            <li><a href="my-reservations.html">Mis Reservas</a></li>
+            <li><a href="#dashboard">Inicio</a></li>
+            <li><a href="#classroom-list">Aulas</a></li>
+            <li><a href="#reserve-classroom">Reservar Aula</a></li>
+            <li><a href="#my-reservations">Mis Reservas</a></li>
             <li><a href="admin.html">Administración</a></li>
         </ul>
     </nav>
@@ -46,30 +47,30 @@
         <section id="classroom-list" aria-labelledby="classroom-list-heading">
             <h2 id="classroom-list-heading">Listado de Aulas</h2>
 
-            <article>
+            <article data-status="available">
                 <h3>Aula A-101</h3>
                 <ul>
                     <li>Capacidad: 40 estudiantes</li>
                     <li>Tipo: Aula Teórica</li>
-                    <li>Estado: Disponible</li>
+                    <li>Estado: <span class="status-label">Disponible</span></li>
                 </ul>
             </article>
 
-            <article>
+            <article data-status="occupied">
                 <h3>Laboratorio B-205</h3>
                 <ul>
                     <li>Capacidad: 25 estudiantes</li>
                     <li>Tipo: Laboratorio de Cómputo</li>
-                    <li>Estado: Ocupada</li>
+                    <li>Estado: <span class="status-label">Ocupada</span></li>
                 </ul>
             </article>
 
-            <article>
+            <article data-status="available">
                 <h3>Aula C-310</h3>
                 <ul>
                     <li>Capacidad: 60 estudiantes</li>
                     <li>Tipo: Auditorio</li>
-                    <li>Estado: Disponible</li>
+                    <li>Estado: <span class="status-label">Disponible</span></li>
                 </ul>
             </article>
 

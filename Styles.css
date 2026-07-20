@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --color-abyss: #071B33;
+    --color-deep-blue: #0B3D91;
+    --color-blue: #1565D8;
+    --color-teal: #14B8A6;
+    --color-green: #2FD98A;
+    --color-mint: #B9FBEA;
+    --color-ink: #0A1F3D;
+    --color-muted: #4A6377;
+    --color-surface: #F4FFFC;
+    --color-surface-card: #FFFFFF;
+    --color-border: #D6F5EC;
+    --gradient-wave: linear-gradient(115deg, var(--color-deep-blue) 0%, var(--color-teal) 50%, var(--color-green) 100%);
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Reset & Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--color-ink); background-color: var(--color-surface); line-height: 1.6; }
+a { color: inherit; text-decoration: none; }
+
+/* Layout Containers */
+main { max-width: 1180px; margin: 0 auto; padding: 3.5rem 2rem 5rem; display: flex; flex-direction: column; gap: 4rem; }
+#dashboard, #classroom-list, #reserve-classroom, #my-reservations { scroll-margin-top: 5.5rem; }
+
+/* Header & Footer Layout Shared Components */
+header, footer { position: relative; overflow: hidden; padding: 3.5rem 2rem 5rem; background-size: cover; background-position: center; }
+header h1, header > p, header section, footer p { position: relative; z-index: 2; }
+header::after, footer::before { content: ''; position: absolute; left: -12%; right: -12%; height: 120px; border-radius: 50%; background-color: var(--color-surface); z-index: 1; }
+header::after { bottom: -60px; }
+footer::before { top: -60px; }
+
+/* Header Elements */
+header { color: #FFFFFF; background-image: linear-gradient(120deg, rgba(7, 27, 51, 0.78), rgba(11, 61, 145, 0.55) 45%, rgba(20, 184, 166, 0.35) 100%), url('images/hero-bg.png'); }
+header h1 { font-family: var(--font-display); font-size: clamp(1.9rem, 4vw, 2.9rem); letter-spacing: -0.02em; }
+header > p { margin-top: 0.4rem; font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.9; }
+header section { display: flex; flex-wrap: wrap; gap: 1.5rem; width: fit-content; margin-top: 1.85rem; padding: 0.85rem 1.4rem; background-color: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.28); border-radius: 999px; backdrop-filter: blur(6px); font-family: var(--font-mono); font-size: 0.82rem; }
+
+/* Navigation */
+nav { position: sticky; top: 0; z-index: 20; background-color: var(--color-surface-card); border-bottom: 1px solid var(--color-border); }
+nav ul { display: flex; gap: 0.25rem; max-width: 1180px; margin: 0 auto; padding: 0 2rem; list-style: none; overflow-x: auto; }
+nav a { position: relative; display: inline-block; padding: 1.05rem 0.9rem; font-weight: 600; font-size: 0.95rem; white-space: nowrap; transition: color 0.25s ease; }
+nav a::after { content: ''; position: absolute; left: 0.9rem; right: 0.9rem; bottom: 0.65rem; height: 3px; border-radius: 3px; background: var(--gradient-wave); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+nav a:hover, nav a:focus-visible { color: var(--color-teal); }
+nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); }
+
+/* Global Sections & Headings */
+section h2 { position: relative; padding-left: 1.1rem; margin-bottom: 1.5rem; font-family: var(--font-display); font-size: 1.55rem; }
+section h2::before { content: ''; position: absolute; left: 0; top: 0.15em; bottom: 0.15em; width: 5px; border-radius: 3px; background: var(--gradient-wave); }
+
+/* Dashboard Card Component */
+#dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+#dashboard h2, #classroom-list h2 { grid-column: 1 / -1; }
+#dashboard article { position: relative; overflow: hidden; padding: 1.85rem; background-color: var(--color-surface-card); border: 1px solid var(--color-border); border-radius: 16px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+#dashboard article::before { content: ''; position: absolute; inset: 0; background: var(--gradient-wave); opacity: 0; transition: opacity 0.3s ease; }
+#dashboard article:hover { transform: translateY(-6px); box-shadow: 0 18px 34px rgba(11, 61, 145, 0.16); }
+#dashboard article:hover::before { opacity: 0.06; }
+#dashboard h3 { position: relative; font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-muted); }
+#dashboard p { position: relative; margin-top: 0.5rem; font-family: var(--font-display); font-size: 2.75rem; font-weight: 700; background: var(--gradient-wave); background-clip: text; -webkit-background-clip: text; color: transparent; }
+
+/* Classroom Grid Component */
+#classroom-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; }
+#classroom-list article { padding: 1.6rem; background-color: var(--color-surface-card); border: 1px solid var(--color-border); border-top: 4px solid var(--color-teal); border-radius: 14px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease; }
+#classroom-list article:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(20, 184, 166, 0.2); }
+#classroom-list article[data-status="occupied"] { border-top-color: var(--color-deep-blue); }
+#classroom-list article[data-status="occupied"]:hover { box-shadow: 0 16px 30px rgba(11, 61, 145, 0.22); }
+#classroom-list h3 { margin-bottom: 0.85rem; font-family: var(--font-display); font-size: 1.15rem; }
+#classroom-list ul { display: flex; flex-direction: column; gap: 0.5rem; list-style: none; font-size: 0.9rem; color: var(--color-muted); }
+
+/* Status Labels */
+.status-label { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.15rem 0.65rem; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; border-radius: 999px; }
+article[data-status="available"] .status-label { color: #0B7A54; background-color: rgba(47, 217, 138, 0.16); }
+article[data-status="occupied"] .status-label { color: var(--color-deep-blue); background-color: rgba(11, 61, 145, 0.12); }
+
+/* Form Component */
+#reserve-classroom form { max-width: 560px; padding: 2rem; background-color: var(--color-surface-card); border: 1px solid var(--color-border); border-radius: 16px; }
+fieldset { display: flex; flex-direction: column; gap: 1.15rem; border: none; }
+legend { margin-bottom: 0.4rem; font-family: var(--font-display); font-size: 1rem; color: var(--color-deep-blue); }
+label { display: block; margin-bottom: 0.35rem; font-size: 0.85rem; font-weight: 600; color: var(--color-muted); }
+select, input, textarea { width: 100%; padding: 0.75rem 0.9rem; font-family: var(--font-body); font-size: 0.95rem; color: var(--color-ink); background-color: var(--color-surface); border: 1.5px solid var(--color-border); border-radius: 10px; transition: border-color 0.25s ease, box-shadow 0.25s ease; }
+textarea { min-height: 90px; resize: vertical; }
+select:hover, input:hover, textarea:hover { border-color: var(--color-teal); }
+select:focus, input:focus, textarea:focus { outline: none; border-color: var(--color-teal); box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.15); }
+
+/* Buttons */
+button[type="submit"] { align-self: flex-start; margin-top: 0.5rem; padding: 0.85rem 2.1rem; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: #FFFFFF; background: var(--gradient-wave); background-size: 200% 100%; background-position: 0% 0; border: none; border-radius: 999px; cursor: pointer; transition: background-position 0.45s ease, transform 0.2s ease, box-shadow 0.3s ease; }
+button[type="submit"]:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(20, 184, 166, 0.35); }
+button[type="submit"]:active { transform: translateY(0); }
+
+/* Tables Component */
+#my-reservations table { width: 100%; border-collapse: collapse; background-color: var(--color-surface-card); border: 1px solid var(--color-border); border-radius: 14px; overflow: hidden; }
+#my-reservations caption { caption-side: top; margin-bottom: 0.85rem; text-align: left; font-size: 0.85rem; color: var(--color-muted); }
+#my-reservations thead th { padding: 0.95rem 1.3rem; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: left; color: #FFFFFF; background: var(--gradient-wave); }
+#my-reservations tbody td { padding: 0.95rem 1.3rem; font-size: 0.9rem; border-top: 1px solid var(--color-border); }
+#my-reservations tbody tr { transition: background-color 0.25s ease; }
+#my-reservations tbody tr:hover { background-color: rgba(20, 184, 166, 0.08); }
+#my-reservations tbody tr:hover td:first-child { font-weight: 600; color: var(--color-teal); }
+
+/* Footer Elements */
+footer { padding: 4.5rem 2rem 2.5rem; text-align: center; color: #EAFBF6; background-image: linear-gradient(120deg, rgba(7, 27, 51, 0.88), rgba(11, 61, 145, 0.65) 50%, rgba(20, 184, 166, 0.45) 100%), url('images/footer-bg.png'); }
+footer p:first-child { margin-bottom: 0.5rem; font-family: var(--font-display); font-size: 1.1rem; }
+footer p:nth-child(2) { font-size: 0.85rem; opacity: 0.85; }
+footer p:last-child { margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.75rem; opacity: 0.65; }
+
+/* Responsive Media Queries */
+@media (max-width: 640px) {
+    header { padding: 2.75rem 1.25rem 4rem; }
+    main { padding: 2.5rem 1.25rem 3.5rem; gap: 2.75rem; }
+    nav ul { padding: 0 1rem; }
+    #dashboard p { font-size: 2.25rem; }
+    #reserve-classroom form { padding: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+}
